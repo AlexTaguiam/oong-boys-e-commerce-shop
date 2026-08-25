@@ -278,7 +278,7 @@ function LoginForm({ onSwitch }: LoginFormProps) {
         <h2 className="text-3xl lg:text-4xl font-serif font-bold tracking-tight text-[#2d4029]">
           Sign in to
           <br />
-          Mushroom Harvest
+          B&J Mushroom
         </h2>
         <p className="text-sm text-gray-500 font-medium">
           Don't have an account?{" "}
@@ -885,7 +885,7 @@ function RegisterBrandPanel() {
       <div className="my-auto space-y-10 relative z-10 max-w-lg">
         <div className="space-y-4">
           <h1 className="text-4xl lg:text-5xl font-serif font-bold tracking-wide leading-tight text-white">
-            Start Your Journey with <br /> Mushroom Harvest
+            Start Your Journey with <br /> B&J Mushroom
           </h1>
           <p className="text-sm text-gray-300 font-medium leading-relaxed">
             Create an account to purchase premium mushroom products, save
