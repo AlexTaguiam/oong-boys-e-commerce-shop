@@ -11,6 +11,7 @@ import {
   X,
   PhoneCall,
   LayoutDashboard,
+  UserCog,
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useCart } from "@/context/cartContext";
@@ -185,6 +186,17 @@ export default function Navbar() {
                     <button
                       onClick={() => {
                         setIsProfileOpen(false);
+                        navigate("/profile");
+                      }}
+                      className="w-full text-left rounded-xl hover:bg-gray-50 text-gray-700 font-medium px-3 py-2 flex items-center gap-2.5 transition-colors"
+                    >
+                      <UserCog className="w-4 h-4 text-gray-400" />
+                      My Profile
+                    </button>
+
+                    <button
+                      onClick={() => {
+                        setIsProfileOpen(false);
                         navigate("/orders");
                       }}
                       className="w-full text-left rounded-xl hover:bg-gray-50 text-gray-700 font-medium px-3 py-2 flex items-center gap-2.5 transition-colors"
@@ -272,9 +284,15 @@ export default function Navbar() {
                         </button>
                       </div>
 
-                      {/* Profile Section inside Drawer */}
+                      {/* Profile Section inside Drawer — tap to open profile */}
                       {user && (
-                        <div className="flex items-center gap-3 bg-white p-4 rounded-2xl border border-gray-100 shadow-sm">
+                        <button
+                          onClick={() => {
+                            setIsMobileOpen(false);
+                            navigate("/profile");
+                          }}
+                          className="w-full flex items-center gap-3 bg-white p-4 rounded-2xl border border-gray-100 shadow-sm text-left hover:border-gray-200 transition-colors"
+                        >
                           <Avatar className="w-10 h-10 border border-gray-100">
                             <AvatarImage
                               src={profile?.photoURL || ""}
@@ -293,7 +311,8 @@ export default function Navbar() {
                               {role || "Customer"}
                             </p>
                           </div>
-                        </div>
+                          <UserCog className="w-4 h-4 text-gray-400 shrink-0" />
+                        </button>
                       )}
 
                       {/* Mobile Links Stack */}
@@ -319,6 +338,24 @@ export default function Navbar() {
                             </NavLink>
                           );
                         })}
+
+                        {user && (
+                          <NavLink
+                            to="/profile"
+                            onClick={() => setIsMobileOpen(false)}
+                            className={({ isActive }) => `
+                                flex items-center gap-3 px-4 py-3.5 rounded-xl text-base font-semibold transition-all
+                                ${
+                                  isActive
+                                    ? "bg-[#4c6a46]/10 text-[#4c6a46]"
+                                    : "text-gray-600 hover:bg-gray-50"
+                                }
+                              `}
+                          >
+                            <UserCog className="w-5 h-5" />
+                            My Profile
+                          </NavLink>
+                        )}
                       </div>
                     </div>
 

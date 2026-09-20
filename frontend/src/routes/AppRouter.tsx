@@ -8,6 +8,7 @@ import CartPage from "../pages/customer/CartPage";
 import CheckoutPage from "../pages/customer/CheckoutPage";
 import ProductDetailPage from "../pages/customer/ProductDetailPage";
 import OrdersPage from "../pages/customer/OrdersPage";
+import ProfilePage from "../pages/customer/ProfilePage";
 
 import DashboardPage from "../pages/admin/DashboardPage";
 import InventoryPage from "../pages/admin/InventoryPage";
@@ -21,7 +22,9 @@ import OrderDetailPage from "@/pages/customer/OrderDetailPage";
 
 import AdminLayout from "@/components/admin/AdminLayout";
 import ProductsPage from "@/pages/admin/ProductsPage";
-import PaymentResultPage, { LegacyPaymentResultPage } from "@/pages/customer/PaymentResultPage";
+import PaymentResultPage, {
+  LegacyPaymentResultPage,
+} from "@/pages/customer/PaymentResultPage";
 
 const publicRoutes = (
   <>
@@ -38,13 +41,17 @@ const customerRoutes = (
     <Route path="/checkout" element={<CheckoutPage />} />
     <Route path="/orders" element={<OrdersPage />} />
     <Route path="/orders/:orderId" element={<OrderDetailPage />} />
+    <Route path="/profile" element={<ProfilePage />} />
     <Route path="/products/:productId" element={<ProductDetailPage />} />
     <Route path="/contact" element={<ContactPage />} />
     <Route
       path="/orders/:orderId/payment-result"
       element={<LegacyPaymentResultPage />}
     />
-    <Route path="/payment-result/:paymentIntentId" element={<PaymentResultPage />} />
+    <Route
+      path="/payment-result/:paymentIntentId"
+      element={<PaymentResultPage />}
+    />
   </>
 );
 

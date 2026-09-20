@@ -27,7 +27,15 @@ export const syncUser = async (req: Request, res: Response): Promise<void> => {
 
   // Prefer the verified token claim over client input for name —
   // client input is only a fallback for providers that don't supply a display name.
-  const finalName = firebaseName || bodyName || "";
+  // Some OAuth providers (e.g. Google without a display name) yield no name at all,
+  // so fall back to the email's local-part to avoid persisting a blank name.
+  // Users can later set a proper name from the profile page.
+  const emailLocalPart = email.split("@")[0];
+  const finalName =
+    (firebaseName && firebaseName.trim()) ||
+    (bodyName && bodyName.trim()) ||
+    emailLocalPart ||
+    "";
 
   try {
     const existingUser = await prisma.user.findUnique({

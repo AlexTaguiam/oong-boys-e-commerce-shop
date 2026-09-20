@@ -168,6 +168,13 @@ export const getOrders = async (req: Request, res: Response): Promise<void> => {
     const orders = await prisma.order.findMany({
       where: whereClause,
       include: {
+        user: {
+          select: {
+            name: true,
+            email: true,
+            phone: true,
+          },
+        },
         orderItems: {
           select: {
             quantity: true,
@@ -192,9 +199,21 @@ export const getOrders = async (req: Request, res: Response): Promise<void> => {
       },
     });
 
+    // Flatten the customer identity onto the order for the admin table.
+    // Fall back to email when the customer has no name yet (e.g. Google OAuth
+    // signups that never completed their profile).
+    const shapedOrders = orders.map((order) => {
+      const { user, ...rest } = order;
+      return {
+        ...rest,
+        userName: user?.name?.trim() || user?.email || null,
+        userEmail: user?.email ?? null,
+      };
+    });
+
     sendResponse(res, 200, "Orders retrieved successfully", {
-      count: orders.length,
-      orders,
+      count: shapedOrders.length,
+      orders: shapedOrders,
     });
   } catch (error: any) {
     console.error("Unable to get orders ", error.message || error);
@@ -240,6 +259,13 @@ export const getOrderById = async (
     const order = await prisma.order.findFirst({
       where: whereClause,
       include: {
+        user: {
+          select: {
+            name: true,
+            email: true,
+            phone: true,
+          },
+        },
         orderItems: {
           select: {
             quantity: true,
@@ -264,7 +290,15 @@ export const getOrderById = async (
       return; // 👈 FIXED: Safely exits execution context
     }
 
-    sendResponse(res, 200, "Order retrieved successfully", order);
+    // Flatten customer identity, falling back to email when no name is set.
+    const { user, ...rest } = order;
+    const shapedOrder = {
+      ...rest,
+      userName: user?.name?.trim() || user?.email || null,
+      userEmail: user?.email ?? null,
+    };
+
+    sendResponse(res, 200, "Order retrieved successfully", shapedOrder);
   } catch (error: any) {
     console.error(
       "Unable to capture order profile logs:",

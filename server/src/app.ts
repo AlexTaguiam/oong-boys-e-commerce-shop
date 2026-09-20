@@ -5,6 +5,7 @@ import helmet from "helmet";
 
 import productRoutes from "./routes/productRoutes";
 import authRoutes from "./routes/authRoutes";
+import userRoutes from "./routes/userRoutes";
 import orderRoutes from "./routes/orderRoutes";
 import inventoryRoutes from "./routes/inventoryRoutes";
 import paymongoWebhookRouter from "./webhooks/paymongoWebhook";
@@ -54,6 +55,7 @@ app.use(globalLimiter); // Apply global rate limiter to all routes
 
 app.use("/api/products", productRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/inventory", inventoryRoutes);
 app.use("/api", contactRoutes);

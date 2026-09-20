@@ -1,6 +1,7 @@
 // authContext.ts
 import { createContext, useContext } from "react";
 import type { User } from "firebase/auth";
+import type { DbUserProfile } from "../services/profile.service";
 
 export interface AuthUserTemplate {
   uid: string;
@@ -13,9 +14,13 @@ export interface AuthUserTemplate {
 export interface AuthContextType {
   user: User | null;
   profile: AuthUserTemplate | null;
+  /** Persisted profile record from the backend DB (name/phone/address). */
+  dbProfile: DbUserProfile | null;
   role: "admin" | "customer" | null;
   loading: boolean;
   logout: () => Promise<void>;
+  /** Re-fetch the DB profile (call after editing it). */
+  refreshProfile: () => Promise<void>;
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(

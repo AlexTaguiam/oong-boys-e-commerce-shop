@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Truck,
   Store,
@@ -10,8 +10,11 @@ import {
   ShoppingBag,
   Loader2,
   ArrowLeft,
+  UserCog,
+  AlertCircle,
 } from "lucide-react";
 import { toast } from "sonner";
+import { useAuth } from "@/context/authContext";
 import { useCart } from "@/context/cartContext";
 import { createOrder } from "@/services/order.service";
 import { createIntentForCart } from "@/services/payment.service";
@@ -30,6 +33,8 @@ interface FormValidationErrors {
 
 export default function CheckoutPage() {
   const { cartItems, cartTotal, clearCart } = useCart();
+  const { dbProfile } = useAuth();
+  const navigate = useNavigate();
   console.log("cartItems: ", cartItems);
 
   // Checkout Matrix States
@@ -46,6 +51,25 @@ export default function CheckoutPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [placedOrder, setPlacedOrder] = useState<any | null>(null);
+
+  // Pre-fill contact phone and delivery address from the saved profile.
+  // The customer can still edit either for this specific order.
+  useEffect(() => {
+    if (!dbProfile) return;
+    setContactPhone((prev) => prev || dbProfile.phone || "");
+    setDeliveryAddress((prev) => prev || dbProfile.address || "");
+  }, [dbProfile]);
+
+  // A profile is "complete enough" to check out when a real name is set.
+  // Our OAuth fallback stores the email local-part as the name, which we
+  // treat as "not set" so those users are nudged to complete their profile.
+  const emailLocalPart = dbProfile?.email
+    ? dbProfile.email.split("@")[0]
+    : "";
+  const hasRealName =
+    !!dbProfile?.name?.trim() &&
+    dbProfile.name.trim().toLowerCase() !== emailLocalPart.toLowerCase();
+  const profileIncomplete = !hasRealName;
 
   // Client Validation Engine
   const validateForm = (): boolean => {
@@ -70,6 +94,15 @@ export default function CheckoutPage() {
 
   const handleCheckoutSubmission = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Hard requirement: a real name must be on file before ordering so the
+    // admin/order records identify the customer properly.
+    if (profileIncomplete) {
+      toast.error("Please complete your profile (name) before checking out.");
+      navigate("/profile");
+      return;
+    }
+
     if (!validateForm()) return;
 
     setIsSubmitting(true);
@@ -203,6 +236,27 @@ export default function CheckoutPage() {
         <h1 className="font-serif font-bold text-2xl sm:text-3xl text-[#2d4029]">
           Checkout Allocation
         </h1>
+
+        {/* Profile completion gate — customers must set a real name first */}
+        {profileIncomplete && (
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 bg-amber-50 border border-amber-200 rounded-2xl p-4">
+            <div className="flex items-start gap-3 flex-1">
+              <AlertCircle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+              <p className="text-xs text-amber-800 font-medium leading-relaxed">
+                Complete your profile before checking out. We need your full
+                name so we can process and identify your order.
+              </p>
+            </div>
+            <Button
+              type="button"
+              onClick={() => navigate("/profile")}
+              className="bg-[#4c6a46] hover:bg-[#3d5538] text-white rounded-xl shadow-sm font-semibold text-xs h-9 px-4 gap-2 shrink-0"
+            >
+              <UserCog className="w-3.5 h-3.5" />
+              Complete Profile
+            </Button>
+          </div>
+        )}
 
         <form
           onSubmit={handleCheckoutSubmission}
@@ -508,7 +562,9 @@ export default function CheckoutPage() {
             {/* Action Directing Dispatch Buttons Layouts */}
             <Button
               type="submit"
-              disabled={isSubmitting || cartItems.length === 0}
+              disabled={
+                isSubmitting || cartItems.length === 0 || profileIncomplete
+              }
               className="w-full rounded-xl text-xs font-bold uppercase tracking-wider h-11 shadow-md bg-[#4c6a46] hover:bg-[#3d5538] text-white transition-all disabled:opacity-50"
             >
               {isSubmitting ? (
