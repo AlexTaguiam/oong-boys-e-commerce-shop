@@ -278,7 +278,7 @@ function LoginForm({ onSwitch }: LoginFormProps) {
         <h2 className="text-3xl lg:text-4xl font-serif font-bold tracking-tight text-[#2d4029]">
           Sign in to
           <br />
-          B&J Mushroom
+          Oong Boys
         </h2>
         <p className="text-sm text-gray-500 font-medium">
           Don't have an account?{" "}
@@ -325,7 +325,7 @@ function LoginForm({ onSwitch }: LoginFormProps) {
               type="email"
               required
               onChange={() => setErrorMessage(null)}
-              placeholder="example@mushroomharvest.com"
+              placeholder="your@email.com"
               className="w-full h-12 pl-12 pr-4 text-base text-[#4c6a46] bg-white border border-gray-200 rounded-xl focus:outline-none focus:border-[#4c6a46] focus:ring-2 focus:ring-[#4c6a46]/20 transition-all shadow-sm placeholder:text-gray-300"
             />
           </div>
@@ -577,7 +577,7 @@ function RegisterForm({ onSwitch }: RegisterFormProps) {
               type="email"
               required
               onChange={() => setErrorMessage(null)}
-              placeholder="example@mushroomharvest.com"
+              placeholder="your@email.com"
               className={inputClass}
             />
           </div>
@@ -792,7 +792,7 @@ function LoginBrandPanel() {
             </h3>
             <p className="text-xs text-gray-500 font-medium leading-relaxed">
               Browse our products, place your order securely, and track every
-              delivery from our farm to your doorstep.
+              delivery from Oong Boys straight to your doorstep.
             </p>
           </div>
 
@@ -842,7 +842,7 @@ function LoginBrandPanel() {
           </h4>
           <p className="text-sm text-gray-300 font-medium leading-relaxed max-w-sm">
             Discover premium mushroom products, manage your cart, and follow
-            your order every step of the way.
+            your order every step of the way with Oong Boys.
           </p>
         </div>
 
@@ -874,22 +874,22 @@ function RegisterBrandPanel() {
       <div className="flex items-center gap-3 relative z-10">
         <div className="w-10 h-10 bg-[#faf8f4] rounded-xl flex items-center justify-center shadow-md shadow-[#4c6a46]/10 transition-transform group-hover:scale-105">
           <span className="text-white font-serif text-xl font-bold">
-            <img src={logo} alt=" b&J logo" />
+            <img src={logo} alt="Oong Boys logo" />
           </span>
         </div>
         <span className="font-serif font-bold text-xl text-[#2d4029] tracking-wide">
-          Mushroom Harvest
+          Oong Boys
         </span>
       </div>
 
       <div className="my-auto space-y-10 relative z-10 max-w-lg">
         <div className="space-y-4">
           <h1 className="text-4xl lg:text-5xl font-serif font-bold tracking-wide leading-tight text-white">
-            Start Your Journey with <br /> B&J Mushroom
+            Start Your Journey with <br /> Oong Boys
           </h1>
           <p className="text-sm text-gray-300 font-medium leading-relaxed">
-            Create an account to purchase premium mushroom products, save
-            delivery addresses and track orders.
+            Create an account to order fresh mushroom products, save your
+            delivery address, and track your orders with ease.
           </p>
         </div>
 
@@ -928,8 +928,8 @@ function RegisterBrandPanel() {
       </div>
 
       <div className="text-sm text-gray-400 font-medium max-w-sm relative z-10">
-        Join thousands of culinary chefs and home cooks choosing premium,
-        farm-to-table delivery parameters.
+        Join the growing community of mushroom lovers choosing fresh,
+        farm-direct products from Oong Boys.
       </div>
     </div>
   );
@@ -995,11 +995,11 @@ export default function AuthPage() {
           <div className="flex items-center gap-3 mb-6 md:hidden">
             <div className="w-10 h-10 bg-[#faf8f4] rounded-xl flex items-center justify-center shadow-md shadow-[#4c6a46]/10 transition-transform group-hover:scale-105">
               <span className="text-white font-serif text-xl font-bold">
-                <img src={logo} alt=" b&J logo" />
+                <img src={logo} alt="Oong Boys logo" />
               </span>
             </div>
             <span className="font-serif font-bold text-xl text-[#2d4029] tracking-wide">
-              Mushroom Harvest
+              Oong Boys
             </span>
           </div>
 

@@ -42,7 +42,7 @@ export function AdminSidebar({ onNavItemClick }: AdminSidebarProps) {
         </div>
         <div className="flex flex-col overflow-hidden">
           <span className="font-serif font-bold text-base tracking-tight text-[#2d4029] truncate">
-            Mushroom Portal
+            Oong Boys
           </span>
           <span className="text-[10px] uppercase font-bold tracking-wider text-[#4c6a46]">
             Control Panel

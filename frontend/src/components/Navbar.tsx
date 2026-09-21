@@ -72,11 +72,11 @@ export default function Navbar() {
             <Link to="/" className="flex items-center gap-3 group">
               <div className="w-10 h-10 bg-[#faf8f4] rounded-xl flex items-center justify-center shadow-md shadow-[#4c6a46]/10 transition-transform group-hover:scale-105">
                 <span className="text-white font-serif text-xl font-bold">
-                  <img src={logo} alt=" b&J logo" />
+                  <img src={logo} alt="Oong Boys logo" />
                 </span>
               </div>
               <span className="font-serif font-bold text-xl text-[#2d4029] tracking-wide transition-colors group-hover:text-[#4c6a46]">
-                B&J Mushrooms
+                Oong Boys
               </span>
             </Link>
 
@@ -271,10 +271,10 @@ export default function Navbar() {
                         <div className="font-serif font-bold text-xl text-[#2d4029] flex items-center gap-2.5">
                           <div className="w-10 h-10 bg-[#faf8f4] rounded-xl flex items-center justify-center shadow-md shadow-[#4c6a46]/10 transition-transform group-hover:scale-105">
                             <span className="text-white font-serif text-xl font-bold">
-                              <img src={logo} alt=" b&J logo" />
+                              <img src={logo} alt="Oong Boys logo" />
                             </span>
                           </div>
-                          B&J Mushrooms
+                          Oong Boys
                         </div>
                         <button
                           onClick={() => setIsMobileOpen(false)}

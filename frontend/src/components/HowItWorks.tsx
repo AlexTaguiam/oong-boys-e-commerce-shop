@@ -31,7 +31,7 @@ const stepsData: StepItem[] = [
     icon: Search,
     title: "Browse Products",
     description:
-      "Explore our wide selection of gourmet mushroom products and grow kits.",
+      "Explore our selection of fresh mushroom products and grow kits from Oong Boys.",
   },
   {
     number: "2",
@@ -51,7 +51,7 @@ const stepsData: StepItem[] = [
     icon: Package,
     title: "Order Processing",
     description:
-      "We carefully sort, pack, and prepare your fresh harvest orders.",
+      "We carefully sort, pack, and prepare your order for a fresh, clean delivery.",
   },
   {
     number: "5",
@@ -65,7 +65,7 @@ const stepsData: StepItem[] = [
     icon: ThumbsUp,
     title: "Receive & Review",
     description:
-      "Receive your clean items fresh and share your feedback with our farm.",
+      "Receive your items fresh and share your feedback with the Oong Boys team.",
   },
 ];
 
@@ -139,8 +139,8 @@ export default function HowItWorks() {
           How It Works
         </h2>
         <p className="text-sm text-gray-500 max-w-md mx-auto font-medium">
-          Ordering is easy! Follow these simple steps to bring premium organic
-          mushrooms home.
+          Ordering from Oong Boys is simple. Follow these steps to get fresh
+          mushroom products delivered to your door.
         </p>
       </div>
 

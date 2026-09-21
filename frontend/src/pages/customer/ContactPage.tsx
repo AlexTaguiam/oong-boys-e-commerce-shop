@@ -2,9 +2,9 @@ import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
 import background from "@/assets/bg2.jpg";
 
-// Validated Tuguegarao City Google Maps string value. Swap out when precise farm metrics settle.
+// Update with Oong Boys Google Maps location when available.
 const GOOGLE_MAPS_EMBED_SRC =
-  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d964.123456789!2d121.887543!3d17.8770515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3385ebce12aeeab3%3A0xa06ff1bff34636aa!2sBNJ%20Mushroom%20Products!5e0!3m2!1sen!2sph!4v1710000000000!5m2!1sen!2sph";
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d964.123456789!2d121.887543!3d17.8770515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3385ebce12aeeab3%3A0xa06ff1bff34636aa!2sOong%20Boys!5e0!3m2!1sen!2sph!4v1710000000000!5m2!1sen!2sph";
 export default function ContactPage() {
   return (
     <div className="w-full min-h-screen bg-[#faf8f4] font-sans antialiased flex flex-col">
@@ -13,7 +13,7 @@ export default function ContactPage() {
         {/* Placeholder background nature image asset */}
         <img
           src={background}
-          alt="Mushroom cultivation facility background"
+          alt="Oong Boys background"
           className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none brightness-95"
         />
         {/* Gradient Overlay mirroring the homepage's sage green aesthetic filter depth */}
@@ -29,9 +29,8 @@ export default function ContactPage() {
           </h1>
           <div className="w-16 h-1 bg-[#4c6a46] mx-auto mb-4 rounded-full" />
           <p className="text-sm sm:text-base text-gray-200 max-w-xl mx-auto font-medium leading-relaxed">
-            Have questions about our premium mushroom products? We're here to
-            help! Reach out to learn more about our organic, sustainably grown
-            mushrooms and wholesale opportunities.
+            Have questions about our mushroom products? We'd love to hear from
+            you. Reach out to learn more about what Oong Boys has to offer.
           </p>
         </div>
       </div>
@@ -46,7 +45,7 @@ export default function ContactPage() {
               <Phone className="w-5 h-5" />
             </div>
             <h3 className="font-serif font-bold text-lg text-[#2d4029] mb-2">
-              (+63) 965 1107 981
+              (+63) 9XX XXX XXXX
             </h3>
             <p className="text-xs sm:text-sm text-gray-400 font-medium leading-relaxed mb-4">
               Call us for inquiries about product orders, bulk purchases, or
@@ -63,7 +62,7 @@ export default function ContactPage() {
               <Mail className="w-5 h-5" />
             </div>
             <h3 className="font-serif font-bold text-lg text-[#faf8f4] mb-2">
-              taguaimjohnalex@gmail.com
+              oongboys@gmail.com
             </h3>
             <p className="text-xs sm:text-sm text-gray-300/80 font-medium leading-relaxed mb-4">
               Email us anytime with your questions or inquiries. We'll respond
@@ -80,11 +79,11 @@ export default function ContactPage() {
               <MapPin className="w-5 h-5" />
             </div>
             <h3 className="font-serif font-bold text-lg text-[#2d4029] mb-2">
-              Tuguegarao City, Cagayan
+              Cagayan Valley, Philippines
             </h3>
             <p className="text-xs sm:text-sm text-gray-400 font-medium leading-relaxed mb-4">
-              Visit our state-of-the-art mushroom cultivation facility in the
-              heart of Cagayan Valley.
+              Visit our mushroom farm and learn more about our growing process
+              and product lineup.
             </p>
             <span className="text-xs font-bold text-[#4c6a46] group-hover:underline cursor-pointer mt-auto">
               Learn More
@@ -108,8 +107,8 @@ export default function ContactPage() {
               </div>
               <p className="text-xs sm:text-sm text-gray-500 font-medium leading-relaxed">
                 We're open year-round to serve your mushroom product needs.
-                Visit our farm or office during business hours to learn about
-                our growing process and product lineup.
+                Stop by or reach out during business hours to learn more about
+                Oong Boys products and ordering.
               </p>
 
               {/* Timing Node Lists */}
@@ -136,7 +135,7 @@ export default function ContactPage() {
               </h4>
               <div className="w-full h-70 sm:h-80 rounded-3xl overflow-hidden border border-gray-200/60 shadow-xl shadow-[#2d4029]/4 bg-white p-1.5 group">
                 <iframe
-                  title="BNJ Mushroom Products Facility Location Map"
+                  title="Oong Boys Location Map"
                   src={GOOGLE_MAPS_EMBED_SRC}
                   className="w-full h-full rounded-2xl border-0 transition-all duration-300 group-hover:contrast-105"
                   allowFullScreen={false}

@@ -15,12 +15,12 @@ interface HeroProps {
 }
 
 export default function HomePage({
-  badgeText = "FRESH • NATURAL • SUSTAINABLE",
-  headline = "Premium Organic Mushroom Products",
-  subtext = "We provide high-quality, farm-fresh culinary mushrooms and premium cultivation kits. Hand-harvested daily, certified organic, and delivered straight to your door with absolute care.",
+  badgeText = "FRESH • NATURAL • FARM-GROWN",
+  headline = "Premium Mushroom Products by Oong Boys",
+  subtext = "Fresh, organically grown mushrooms and premium cultivation kits — hand-harvested daily and delivered straight to your door with care.",
   primaryCtaText = "Shop Catalog",
   primaryCtaHref = "/catalog",
-  secondaryCtaText = "Learn Cultivation",
+  secondaryCtaText = "How It Works",
   secondaryCtaHref = "#guides",
 }: HeroProps) {
   return (
@@ -30,7 +30,7 @@ export default function HomePage({
         <div className="absolute inset-0 w-full h-full z-0">
           <img
             src={heroMushroomBg}
-            alt="Alhona Gourmet Mushrooms Showcase"
+            alt="Oong Boys mushroom products showcase"
             loading="eager"
             fetchPriority="high"
             decoding="async"

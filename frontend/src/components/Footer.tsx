@@ -104,21 +104,21 @@ export default function Footer() {
             <Link to="/" className="flex items-center gap-3 group w-max">
               <div className="w-10 h-10 bg-[#faf8f4] rounded-xl flex items-center justify-center shadow-md shadow-[#4c6a46]/10 transition-transform group-hover:scale-105">
                 <span className="text-white font-serif text-xl font-bold">
-                  <img src={logo} alt=" b&J logo" />
+                  <img src={logo} alt="Oong Boys logo" />
                 </span>
               </div>
               <span className="font-serif font-bold text-xl text-[#2d4029] tracking-wide transition-colors group-hover:text-[#4c6a46]">
-                B&J Mushroom Products
+                Oong Boys
               </span>
             </Link>
             <p className="text-sm text-[#faf8f4] hover:text-white font-medium leading-relaxed max-w-sm">
-              Discover gourmet mushroom varieties, premium grow kits, and
-              advanced laboratory equipment engineered to bring farm-to-table
-              quality straight to your space.
+              Fresh, organically grown mushroom products delivered straight to
+              your door. From culinary varieties to premium grow kits — grown
+              with care, harvested with pride.
             </p>
             <div className="flex items-center gap-3 pt-2">
               <a
-                href="https://www.facebook.com/share/1Bmfp87yNE/"
+                href="#"
                 className="w-9 h-9 bg-[#faf8f4] hover:bg-white text-[#4c6a46] border border-[#faf8f4] rounded-full flex items-center justify-center transition-all shadow-sm"
               >
                 <FacebookIcon />
@@ -226,8 +226,8 @@ export default function Footer() {
               Subscribe to our Newsletter
             </h5>
             <p className="text-sm text-[#faf8f4] font-medium leading-relaxed">
-              Signup for exclusive batch releases, deep discounts, and seasonal
-              mushroom cultivation tutorials.
+              Sign up for exclusive batch releases, special discounts, and
+              seasonal mushroom tips from Oong Boys.
             </p>
 
             <form onSubmit={handleSubscribe} className="space-y-2.5 pt-1">
@@ -235,7 +235,7 @@ export default function Footer() {
                 <input
                   type="email"
                   required
-                  placeholder="example@mushroomharvest.com"
+                  placeholder="your@email.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full h-12 px-4 bg-[#faf8f4] border border-[#faf8f4]/40 text-[#2d4029] text-sm font-medium rounded-2xl placeholder-[#2d4029]/50 focus:outline-none focus:border-white focus:ring-1 focus:ring-white shadow-inner transition-all"
